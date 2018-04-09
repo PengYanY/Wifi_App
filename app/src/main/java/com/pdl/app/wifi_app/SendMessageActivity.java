@@ -23,7 +23,7 @@ public class SendMessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
-        textview= (TextView) findViewById(R.id.textview1);
+        textview= findViewById(R.id.textview1);
         Intent intent = getIntent();
         final String message = intent.getStringExtra("wifiinfo");//获取从上一个页面得到的数据
         final TextView textView1=textview;

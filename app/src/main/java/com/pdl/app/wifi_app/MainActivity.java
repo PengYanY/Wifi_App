@@ -21,14 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     // 打开WIFI
     public void openWifi(Context context) {
-        mWifiManager = (WifiManager) context
-                .getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        if (!mWifiManager.isWifiEnabled()) {//wifi是否打开的判断
+        if (mWifiManager!=null&&!mWifiManager.isWifiEnabled()) {//wifi是否打开的判断
             MyDialog();
             Toast.makeText(MainActivity.this,"请稍等....",Toast.LENGTH_LONG).show();
 
-        }else if (mWifiManager.getWifiState() == 2) {
+        }else if (mWifiManager!=null&&mWifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLING) {
             Toast.makeText(context,"亲，Wifi正在开启，不用再开了", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, DisplayMessageActivity.class);
             startActivity(intent);
